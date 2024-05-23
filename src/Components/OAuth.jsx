@@ -16,7 +16,7 @@ export default function OAuth() {
       const result = await signInWithPopup(auth,provider);
       const user = result.user;
       //check if the user is  in the database
-      const docRef = doc(db, "users","uid")
+      const docRef = doc(db, "users","user.uid")
       const docSnap = await getDoc(docRef);
       if(!docSnap.exists()){
         await setDoc(docRef,{
