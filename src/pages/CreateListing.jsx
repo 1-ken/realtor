@@ -1,7 +1,29 @@
 import React, { useState } from "react";
 
 export default function CreateListing() {
-  function onChange() {}
+  function onChange(e) {
+    let boolean = null;
+    if (e.target.value === "true") {
+      boolean = true;
+    }
+    if (e.target.value === "false") {
+      boolean = false;
+    }
+    //files
+    if (e.target.files) {
+      setFormData((prevState) => ({
+        ...prevState,
+        images: e.target.files,
+      }));
+    }
+    //text/numbers and boolean
+    if (!e.target.files) {
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.id]: boolean ?? e.target.value,
+      }));
+    }
+  }
   const [FormData, setFormData] = useState({
     type: "rent",
     name: "",
@@ -11,7 +33,7 @@ export default function CreateListing() {
     furnished: false,
     Address: "",
     Description: "",
-    offer: true,
+    offer: false,
     regularPrice: 0,
     discountedPrice: 0,
   });
@@ -56,7 +78,7 @@ export default function CreateListing() {
                 : "bg-slate-600 text-white"
             }`}
             id="type"
-            value="sale"
+            value="rent"
           >
             Rent
           </button>
@@ -110,7 +132,7 @@ export default function CreateListing() {
               !parking ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
             id="parking"
-            value={parking}
+            value={true}
           >
             Yes
           </button>
@@ -121,12 +143,12 @@ export default function CreateListing() {
               parking ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
             id="parking"
-            value={true}
+            value={false}
           >
             No
           </button>
         </div>
-        <p className="text-lg mt-6 font-semibold">furnished</p>
+        <p className="text-lg mt-6 font-semibold">Furnished</p>
         <div className="flex">
           <button
             onClick={onChange}
@@ -135,7 +157,7 @@ export default function CreateListing() {
               !furnished ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
             id="furnished"
-            value={furnished}
+            value={true}
           >
             Yes
           </button>
@@ -146,7 +168,7 @@ export default function CreateListing() {
               furnished ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
             id="furnished"
-            value={furnished}
+            value={false}
           >
             No
           </button>
@@ -184,7 +206,7 @@ export default function CreateListing() {
               !offer ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
             id="offer"
-            value={offer}
+            value={true}
           >
             Yes
           </button>
@@ -195,7 +217,7 @@ export default function CreateListing() {
               offer ? "bg-white text-black" : "bg-slate-600 text-white"
             }`}
             id="offer"
-            value={offer}
+            value={false}
           >
             No
           </button>
