@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
-import {
-  doc,
-  updateDoc,
-} from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
+import { FcHome } from "react-icons/fc";
+import { Link } from "react-router-dom";
 export default function Profile() {
   const auth = getAuth();
   const navigate = useNavigate();
@@ -36,8 +35,8 @@ export default function Profile() {
           displayName: name,
         });
         //update the name in the firestore
-        const docRef = doc(db,"users",auth.currentUser.uid);
-        await updateDoc(docRef,{
+        const docRef = doc(db, "users", auth.currentUser.uid);
+        await updateDoc(docRef, {
           name,
         });
       }
@@ -96,6 +95,12 @@ export default function Profile() {
               </p>
             </div>
           </form>
+          <button type="submit" className="w-full bg-blue-600 text-white uppercase px-7 py-3 text-sm font-medium rounded hover:bg-blue-700 shadow-md transition duration-150 ease-in-out hover:shadow-lg active:bg-blue-800 ">
+            <Link className="flex justify-center items-center" to="/create-listing">
+              <FcHome className="mr-2 text-lg bg-red-200 rounded-full border-2 "/>
+              sell or rent your home
+            </Link>
+          </button>
         </div>
       </section>
     </>
