@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Spinner from "../Components/Spinner";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
@@ -126,6 +126,7 @@ export default function CreateListing() {
       imgUrls,
       geolocation,
       timestamp: serverTimestamp(),
+      useRef: auth.currentUser.uid,
     };
     delete FormDataCopy.images;
     !FormDataCopy.offer && delete FormDataCopy.discountedPrice;
