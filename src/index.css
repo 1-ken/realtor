@@ -11,3 +11,9 @@ color:#a8dadc;
 .swiper-pagingation-progressbar .swper-pagingation-progressbar-fill{
     background: #a8dadc !important;
 }
+html::-webkit-scrollbar{
+    display: none;
+}
+html{
+    scrollbar-width: none;
+}
