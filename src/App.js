@@ -31,7 +31,7 @@ function App() {
           <Route path="/sign-in" element={<Signin />} />
           <Route path="/sign-up" element={<Signup />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/offer" element={<Offer />} />
+          <Route path="/offers" element={<Offer />} />
           <Route path="/category/:categoryName/:listingId" element={<Listing />} />
         </Routes>
       </Router>
