@@ -20,7 +20,7 @@ export default function Slider() {
   useEffect(() => {
     async function fetchListing() {
       const listingRef = collection(db, "listings");
-      const q = query(listingRef, orderBy("timestamp", "desc"), limit(10));
+      const q = query(listingRef, orderBy("timestamp", "desc"), limit(5));
       const querySnap = await getDocs(q);
       let listings = [];
       querySnap.forEach((doc) => {
